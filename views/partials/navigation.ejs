@@ -5,9 +5,16 @@
         <span class="bi me-4" width="40" height="32"></span>
     </a>
 
+    <!-- aria-current was set here. -->
+
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+        <li class="nav-item">
+            <a href="/dashboard"
+               class="nav-link <%= typeof dashboard != 'undefined' ? 'active' : '' %>">
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item <%= typeof events != 'undefined' ? 'active' : '' %>"><a href="/events" class="nav-link">Events</a></li>
         <li class="nav-item"><a href="/volunteers" class="nav-link">Volunteers</a></li>
         <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
     </ul>
