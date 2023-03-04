@@ -30,10 +30,54 @@ export const userRegister = (req, res, next) => {
         }
     });
 
-    res.redirect('/login?registerSuccess');
+    let alert = {
+        message: "Registration Successful",
+        classes: "alert-success"
+    };
+    return res.render('login', {alert});
 };
 
 // Handle user login.
 export const userLogin = (req, res, next) => {
+    // regenerate the session, which is good practice to help
+    // guard against forms of session fixation.
+    req.session.regenerate((err) => {
+        if (err) next(err);
 
+        const stmt = conn.prepare('SELECT password FROM account WHERE email = ?');
+        const acct = stmt.get(req.body.email);
+
+        // No account exists.
+        if (acct === undefined) {
+            let alert = {
+                message: "Account doesn't exist",
+                classes: "alert-danger"
+            };
+            return res.render('login', {alert});
+        }
+
+        // Compare the password with stored hash.
+        bcrypt.compare(req.body.password, acct.password, (err, result) => {
+            if (err) next(err);
+
+            // Incorrect password.
+            if (!result) {
+                let alert = {
+                    message: "Incorrect Password",
+                    classes: "alert-danger"
+                };
+                return res.render('login', {alert});
+            }
+
+            // store user information in session, typically a user id.
+            req.session.email = req.body.email;
+
+            // save the session before redirection to ensure page.
+            // load does not happen before session is saved.
+            req.session.save(function (err) {
+                if (err) return next(err);
+                res.redirect('/dashboard');
+            });
+        });
+    });
 };

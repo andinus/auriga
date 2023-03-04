@@ -9,16 +9,16 @@ import checkRequiredBody from '../middlewares/checkRequiredBody.js';4
 import * as controller from '../controllers/userController.js';
 
 // GET routes for authentication.
-router.get('/login', (req, res) => {
-    let alert = {};
-    if (req.query.registerSuccess === '') {
-        alert.message = "Registration Successful"
-        alert.classes = "alert-success"
-    }
-
-    res.render('login', {alert})
-});
+router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
+
+// POST route for user login.
+router.post(
+    '/login',
+    checkRequiredBody(["password", "email"]),
+    controller.userLogin
+);
+
 
 // POST route for user registration.
 router.post(

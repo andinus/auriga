@@ -2,6 +2,8 @@ import morgan from 'morgan';
 import express from 'express';
 import expressSession from 'express-session';
 
+import crypto from 'node:crypto';
+
 const app = express();
 app.set('x-powered-by', false);
 app.set('strict routing', true);
@@ -13,9 +15,25 @@ app.use(express.urlencoded({ extended: true }));
 // Some logging to STDOUT.
 app.use(morgan(':remote-addr [:date[clf]] :method :url :status :response-time ms :res[content-length]'));
 
-// Development mode.
-if (process.env.DEVELOPMENT === undefined && process.env.NODE_ENV !== "production")
+
+// Use random string. This means that session cookies won't work when
+// the app is restarted.
+const sessionOptions = {
+    secret: crypto.randomBytes(32).toString('hex'),
+    resave: false,
+    name: 'session.id',
+    saveUninitialized: true,
+};
+
+// Development mode. Also check errorController & utils/debugRequest.
+if (process.env.DEVELOPMENT !== undefined) {
+    console.warn("[!!!] Development Mode Enabled.");
+
+    sessionOptions.secret = 'Development Mode K3rU';
+} else if (process.env.NODE_ENV !== "production")
     console.warn("[!!!] Set the environment variable NODE_ENV to production, to run the app in production mode.");
+
+app.use(expressSession(sessionOptions));
 
 // Mount the routes.
 import {mountRoutes} from './routes/index.js';
