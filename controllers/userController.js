@@ -65,7 +65,7 @@ export const userLogin = (req, res, next) => {
     req.session.regenerate((err) => {
         if (err) next(err);
 
-        const stmt = conn.prepare('SELECT password FROM account WHERE email = ?');
+        const stmt = conn.prepare('SELECT id, email, password FROM account WHERE email = ?');
         const acct = stmt.get(req.body.email);
 
         // No account exists.
@@ -91,7 +91,8 @@ export const userLogin = (req, res, next) => {
             }
 
             // store user information in session, typically a user id.
-            req.session.email = req.body.email;
+            req.session.user = acct.id;
+            req.session.email = acct.email;
 
             // save the session before redirection to ensure page.
             // load does not happen before session is saved.

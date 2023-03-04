@@ -23,14 +23,25 @@
                     <form>
                         <div class="mb-3">
                             <label for="ngoName" class="form-label">Organization Name</label>
-                            <input type="text" class="form-control" name="ngoName" id="ngoName" required>
+                            <input type="text" class="form-control" name="ngoName" id="ngoName" value="<%= name %>" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="description">Describe your Organization</label>
-                            <textarea class="form-control" name="description" id="description" placeholder="Description..." rows="3" required></textarea>
+                            <textarea class="form-control" name="description" id="description" placeholder="Description..." rows="3" required><%= description %></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Theme</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="theme" id="singlepage" value="singlepage">
+                                <label class="form-check-label" for="singlepage">Single Page</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="theme" id="multipage" value="multipage">
+                                <label class="form-check-label" for="multipage">Multi Page</label>
+                            </div>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="publish" role="switch" id="publish">
+                            <input class="form-check-input" type="checkbox" name="publish" role="switch" id="publish" <%= published ? 'checked' : '' %>>
                             <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>
                         </div>
 
