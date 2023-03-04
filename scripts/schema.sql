@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS ngo_detail(
     name TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     theme TEXT NOT NULL CHECK( theme IN ('singlepage', 'multipage') ) DEFAULT 'multipage',
-    published BOOLEAN DEFAULT FALSE
+    publish BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS ngo_event(

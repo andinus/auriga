@@ -5,6 +5,16 @@ const saltRounds = 10; // Goes through 2^rounds of processing.
 
 const conn = db();
 
+// Update detail will update the details.
+export const updateDetail = (req, res, next) => {
+    const b = req.body;
+    const detail = conn.prepare(
+        'UPDATE ngo_detail SET name = ?, description = ?, theme = ?, publish = ? WHERE ngo_id = ?;'
+    );
+    detail.run(b.ngoName, b.description, b.theme, b.publish === 'on' ? 1 : 0 , req.session.user);
+    res.redirect('/dashboard?updated');
+};
+
 // Handle user logout.
 export const userLogout = (req, res, next) => {
     // clear the user from the session object and save.

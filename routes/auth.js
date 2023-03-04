@@ -47,10 +47,17 @@ router.post(
     controller.userLogin
 );
 
-
 // POST route for user registration.
 router.post(
     '/register',
     checkRequiredBody(["password", "ngoName", "email"]),
     controller.userRegister
+);
+
+// POST request to update ngo details.
+router.post(
+    '/detail',
+    isLoggedIn,
+    checkRequiredBody(["description", "ngoName", "theme"]),
+    controller.updateDetail
 );
