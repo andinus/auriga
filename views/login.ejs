@@ -28,13 +28,13 @@
       .form-signin input[type="email"] {
           margin-bottom: -1px;
           border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
       }
 
       .form-signin input[type="password"] {
-      margin-bottom: 10px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+          margin-bottom: 10px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
       }
     </style>
   </head>
@@ -42,6 +42,12 @@
     <main class="form-signin w-100 m-auto">
       <form action="/login" method="post">
         <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+        <% if (alert.message) { %>
+        <div class="alert <%= alert.classes %>" role="alert">
+          <%= alert.message %>
+        </div>
+        <% } %>
 
         <div class="form-floating">
           <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">

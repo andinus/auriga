@@ -30,7 +30,7 @@ export const userRegister = (req, res, next) => {
         }
     });
 
-    res.sendStatus(204);
+    res.redirect('/login?registerSuccess');
 };
 
 // Handle user login.
