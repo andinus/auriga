@@ -20,14 +20,14 @@ export const renderEventPage = (req, res, next) => {
     let template = 'theme/multipage/events';
 
     const stmt = conn.prepare(
-        'SELECT name, description, theme FROM ngo_detail WHERE name = ?'
+        'SELECT ngo_id, name, description, theme FROM ngo_detail WHERE name = ?'
     );
     const detail = stmt.get(req.params.name);
 
     const stmtEvent = conn.prepare(
-        'SELECT name, description, starts, ends FROM ngo_event WHERE name = ?'
+        'SELECT name, description, starts, ends FROM ngo_event WHERE ngo_id = ?'
     );
-    const events = stmtEvent.all(req.params.name);
+    const events = stmtEvent.all(detail.ngo_id);
     console.log(events);
 
     return res.render(template, {detail, events});
