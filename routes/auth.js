@@ -7,5 +7,9 @@ export default router;
 // import * as controller from '../controllers/userController.js';
 
 router.get('/login', (req, res) => {
-    res.render('index', {foo: 'FOO'});
+    res.render('login');
+});
+
+router.get('/register', (req, res) => {
+    res.render('register');
 });
