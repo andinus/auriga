@@ -47,11 +47,7 @@ export const userRegister = (req, res, next) => {
             );
             stmt.run(b.email, hashedPassword, b.ngoName);
 
-            let alert = {
-                message: "Registration Successful",
-                classes: "alert-success"
-            };
-            return res.render('login', {alert});
+            res.redirect('/login?registerSuccess');
         }
     });
 };

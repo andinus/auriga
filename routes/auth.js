@@ -26,7 +26,11 @@ router.get('/login', (req, res) => {
             message: "Login to continue",
             classes: "alert-danger"
         };
-    }
+    } else if (req.query.registerSuccess === '')
+        alert = {
+            message: "Registration Successful",
+            classes: "alert-success"
+        };
 
     res.render('login', {alert})
 });
