@@ -5,5 +5,45 @@
     </head>
     <body>
         <%- include('./partials/navigation', {dashboard: true}); %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Welcome to Auriga!</h3>
+                    <p class="lead">
+                        Auriga is a solution to assist NGOs in
+                        building their online presence.
+                    </p>
+                    <p>
+                        Get started by filling the form on the right!
+                        You can publish your page once you've filled
+                        all the details.
+                    </p>
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="mb-3">
+                            <label for="ngoName" class="form-label">Organization Name</label>
+                            <input type="text" class="form-control" name="ngoName" id="ngoName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email address</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                   placeholder="name@example.com" aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="description">Describe your Organization</label>
+                            <textarea class="form-control" name="description" id="description" placeholder="Description..." rows="3" required></textarea>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="publish" role="switch" id="publish">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>
+                        </div>
+
+                        <button style="width: 100%; margin-top: 1em;" type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
