@@ -1,0 +1,24 @@
+{
+    "name": "Auriga",
+    "version": "0.1.0",
+    "description": "",
+    "exports": "./app.js",
+    "type": "module",
+    "engines": {
+        "node": ">=14.16"
+    },
+    "scripts": {
+        "dev": "node ./app.js"
+    },
+    "author": "Andinus <andinus@nand.sh>",
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "better-sqlite3": "^8.1.0",
+        "better-sqlite3-session-store": "^0.1.0",
+        "ejs": "^3.1.8",
+        "express": "^4.18.2",
+        "express-promise-router": "^4.1.1",
+        "express-session": "^1.17.3",
+        "morgan": "^1.10.0"
+    }
+}
