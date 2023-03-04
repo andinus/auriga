@@ -46,14 +46,14 @@ export const userRegister = (req, res, next) => {
                 'INSERT INTO account (email, password, ngo_name) VALUES (?, ?, ?);'
             );
             stmt.run(b.email, hashedPassword, b.ngoName);
+
+            let alert = {
+                message: "Registration Successful",
+                classes: "alert-success"
+            };
+            return res.render('login', {alert});
         }
     });
-
-    let alert = {
-        message: "Registration Successful",
-        classes: "alert-success"
-    };
-    return res.render('login', {alert});
 };
 
 // Handle user login.

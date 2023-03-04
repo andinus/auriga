@@ -13,11 +13,20 @@ import * as controller from '../controllers/userController.js';
 // GET routes for authentication.
 router.get('/login', (req, res) => {
     let alert;
+    let status = 200;
+
     if (req.query.logout === '')
         alert = {
             message: "Logged out",
             classes: "alert-success"
         };
+    else if (req.query.authRequired === '') {
+        status = 401;
+        alert = {
+            message: "Login to continue",
+            classes: "alert-danger"
+        };
+    }
 
     res.render('login', {alert})
 });
