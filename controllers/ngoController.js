@@ -15,6 +15,24 @@ export const renderLanding = (req, res, next) => {
     return res.render(template, {detail});
 };
 
+// Renders NGO's event page.
+export const renderEventPage = (req, res, next) => {
+    let template = 'theme/multipage/events';
+
+    const stmt = conn.prepare(
+        'SELECT name, description, theme FROM ngo_detail WHERE name = ?'
+    );
+    const detail = stmt.get(req.params.name);
+
+    const stmtEvent = conn.prepare(
+        'SELECT name, description, starts, ends FROM ngo_event WHERE name = ?'
+    );
+    const events = stmtEvent.all(req.params.name);
+    console.log(events);
+
+    return res.render(template, {detail, events});
+};
+
 // Adds event to table.
 export const eventCreate = (req, res, next) => {
     const b = req.body;
