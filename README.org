@@ -1,0 +1,5 @@
+#+title: Auriga
+#+subtitle: Auriga is a solution to assist NGOs in building their online presence
+#+export_file_name: index
+#+options: toc:1
+#+setupfile: ~/.emacs.d/org-templates/projects.org
