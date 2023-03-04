@@ -2,75 +2,100 @@
 <html lang="en">
     <head>
         <%- include('./partials/head', {title: 'Events'}); %>
+        <style>
+         main {
+             padding: 0.4em 2em;
+         }
+         main h3 {
+             float: left;
+         }
+         main button {
+             float: right;
+         }
+        </style>
     </head>
     <body>
         <%- include('./partials/navigation', {events: true}); %>
-        <h3>Events</h3>
-        <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add Events
-       </button>
+        <main>
+            <h3>Events</h3>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Event
+            </button>
+            <br>
+            <br>
+            <hr class="border border-primary border-2 opacity-50">
+            <% if (alert) { %>
+            <div class="alert <%= alert.classes %>" role="alert">
+              <%= alert.message %>
+            </div>
+            <% } %>
 
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h1 class="modal-title fs-5" id="Events">Events</h1>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-             </div>
-             <div class="modal-body">
-                <form action="/event" method="post">
-                    <!--Event name-->
-                    <div class="mb-3">
-                      <label for="InputEventname" class="form-label">Events</label>
-                      <input type="text" class="form-control" id="eventname">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Events">Add Event</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/event" method="post">
+                                <!--Event name-->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                </div>
+
+                                <!--Date-->
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <label for="starts">Starts</label>
+                                            <input type="date" id="starts" name="starts" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="ends">Ends</label>
+                                            <input type="date" id="ends" name="ends" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <!--Description-->
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                                </div>
+                                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                    <!--Date-->
-                    <label for="start">Starts:</label>
-                    <input type="date" id="startDate" name="eventStart">
-                    <label for="end">Ends:</label>
-                    <input type="date" id="endDate" name="eventEnd">
-                    <!--Description-->
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description:</label>
-                        <textarea class="form-control" id="description" rows="3"></textarea>
-                      </div>
-                  <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-                  </form>
-             </div>   
-           </div>
-         </div>
-       </div>
+                </div>
+            </div>
 
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td colspan="2">Larry the Bird</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+            <table class="table table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Starts</th>
+                        <th scope="col">Ends</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                  <!-- add a for loop here to loop over events -->
+                    <tr>
+                        <th scope="row">Name of the event</th>
+                        <td>Starts date</td>
+                        <td>Ends date</td>
+                        <td>Description of event</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </main>
     </body>
 </html>

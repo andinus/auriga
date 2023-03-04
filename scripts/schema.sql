@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS account(
     password TEXT NOT NULL
 );
 
+-- ngo_id should be account_id
+
 CREATE TABLE IF NOT EXISTS ngo_detail(
     ngo_id INTEGER REFERENCES account(id),
     name TEXT NOT NULL,
