@@ -5,6 +5,25 @@ const saltRounds = 10; // Goes through 2^rounds of processing.
 
 const conn = db();
 
+// Handle user logout.
+export const userLogout = (req, res, next) => {
+    // clear the user from the session object and save.
+    // this will ensure that re-using the old session id
+    // does not have a logged in user.
+    req.session.email = null;
+    req.session.save(function (err) {
+        if (err) next(err);
+
+        // regenerate the session, which is good practice to help
+        // guard against forms of session fixation.
+        req.session.regenerate(function (err) {
+            if (err) next(err);
+
+            res.redirect('/login?logout');
+        });
+    });
+};
+
 // Handle user registration.
 export const userRegister = (req, res, next) => {
     // bcrypt only uses first 72 bytes.

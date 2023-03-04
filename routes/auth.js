@@ -4,13 +4,29 @@ import Router from 'express-promise-router';
 const router = new Router();
 export default router;
 
+import { isLoggedIn } from '../middlewares/authentication.js'
 import checkRequiredBody from '../middlewares/checkRequiredBody.js';4
+
 
 import * as controller from '../controllers/userController.js';
 
 // GET routes for authentication.
-router.get('/login', (req, res) => res.render('login', {alert: undefined}));
+router.get('/login', (req, res) => {
+    let alert;
+    if (req.query.logout === '')
+        alert = {
+            message: "Logged out",
+            classes: "alert-success"
+        };
+
+    res.render('login', {alert})
+});
 router.get('/register', (req, res) => res.render('register'));
+
+// GET route for user logout.
+router.get(
+    '/logout', isLoggedIn, controller.userLogout
+);
 
 // POST route for user login.
 router.post(
