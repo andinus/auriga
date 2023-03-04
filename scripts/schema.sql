@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS account(
 CREATE TABLE IF NOT EXISTS ngo_detail(
     ngo_id INTEGER REFERENCES account(id),
     name TEXT NOT NULL,
-    description TEXT NOT NULL,
-    theme TEXT NOT NULL CHECK( theme IN ('cover') ),
+    description TEXT NOT NULL DEFAULT '',
+    theme TEXT NOT NULL CHECK( theme IN ('cover') ) DEFAULT 'cover',
     published BOOLEAN DEFAULT FALSE
 );
 

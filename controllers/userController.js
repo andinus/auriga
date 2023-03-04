@@ -41,11 +41,17 @@ export const userRegister = (req, res, next) => {
         if (err)
             next(err);
         else {
+            // !!! We should use transactions here !!!
             const b = req.body;
-            const stmt = conn.prepare(
-                'INSERT INTO account (email, password, ngo_name) VALUES (?, ?, ?);'
+            const account = conn.prepare(
+                'INSERT INTO account (email, password) VALUES (?, ?);'
             );
-            stmt.run(b.email, hashedPassword, b.ngoName);
+            const accountInfo = account.run(b.email, hashedPassword);
+
+            const detail = conn.prepare(
+                'INSERT INTO ngo_detail (ngo_id, name) VALUES (?, ?);'
+            );
+            detail.run(accountInfo.lastInsertRowid, b.ngoName);
 
             res.redirect('/login?registerSuccess');
         }
