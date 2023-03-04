@@ -87,15 +87,19 @@
                 <tbody>
 
                   <!-- add a for loop here to loop over events -->
+                  <% for (let i =0; i < events.length;  i++ ) { %>
+                    
+                    
                     <tr>
-                        <th scope="row">Name of the event</th>
-                        <td>Starts date</td>
-                        <td>Ends date</td>
-                        <td>Description of event</td>
+                        <th scope="row"><%= events[i].name %></th>
+                        <td><%= events[i].starts %></td>
+                        <td><%= events[i].ends %></td>
+                        <td><%= events[i].description %></td>
                     </tr>
-
+                    <% } %>
                 </tbody>
             </table>
+            
         </main>
     </body>
 </html>
