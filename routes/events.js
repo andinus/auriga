@@ -10,3 +10,4 @@ import { isLoggedIn } from '../middlewares/authentication.js'
 
 // GET routes for list of events.
 // router.get('/events', isLoggedIn, controller.eventsList);
+router.get('/events', (req, res) => res.render('events'));
