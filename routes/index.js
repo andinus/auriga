@@ -1,4 +1,5 @@
 import auth from './auth.js';
+import dashboard from './dashboard.js';
 
 import express from 'express';
 
@@ -8,7 +9,7 @@ export const mountRoutes = app => {
     // Resources.
     app.use('/resources', express.static('resources'));
 
-    for (const r of [auth])
+    for (const r of [auth, dashboard])
         app.use(r);
 
     // Custom 404.
