@@ -14,8 +14,8 @@
                 Dashboard
             </a>
         </li>
-        <li class="nav-item <%= typeof events != 'undefined' ? 'active' : '' %>"><a href="/events" class="nav-link">Events</a></li>
-        <li class="nav-item"><a href="/volunteers" class="nav-link">Volunteers</a></li>
+        <li class="nav-item"><a href="/events" class="nav-link <%= typeof events != 'undefined' ? 'active' : '' %>">Events</a></li>
+        <li class="nav-item"><a href="/volunteers" class="nav-link <%= typeof volunteers != 'undefined' ? 'active' : '' %>">Volunteers</a></li>
         <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
     </ul>
 </header>
