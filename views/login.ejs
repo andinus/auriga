@@ -43,7 +43,7 @@
       <form action="/login" method="post">
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
-        <% if (alert.message) { %>
+        <% if (alert) { %>
         <div class="alert <%= alert.classes %>" role="alert">
           <%= alert.message %>
         </div>
@@ -64,6 +64,8 @@
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <br>
+        <p style="margin: 1em">no account? <a href="/register">sign up!</a></p>
         <p class="mt-5 mb-3 text-muted">© 2023</p>
       </form>
     </main>
