@@ -7,7 +7,6 @@ export default router;
 import { isLoggedIn } from '../middlewares/authentication.js'
 import checkRequiredBody from '../middlewares/checkRequiredBody.js';4
 
-
 import * as controller from '../controllers/userController.js';
 
 // GET routes for authentication.

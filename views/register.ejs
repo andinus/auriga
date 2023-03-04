@@ -44,16 +44,18 @@
         <h1 class="h3 mb-3 fw-normal">Register</h1>
 
         <div class="form-floating">
-          <input type="text" name="ngoName" class="form-control" id="floatingInput" placeholder="NGO Name">
-          <label for="floatingInput">NGO Name</label>
+          <input type="text" name="ngoName" class="form-control" id="ngoName" placeholder="Organization Name">
+          <label for="ngoName">Organization Name</label>
         </div>
         <div class="form-floating">
-          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+          <input type="email" name="email" class="form-control" id="email"
+                 placeholder="name@example.com" aria-describedby="emailHelp">
+          <label for="email">Email address</label>
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="form-floating">
-          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+          <label for="password">Password</label>
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
