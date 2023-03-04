@@ -10,8 +10,11 @@ export const renderLanding = (req, res, next) => {
         'SELECT name, description, theme FROM ngo_detail WHERE name = ?'
     );
     const detail = stmt.get(req.params.name);
-    console.log(detail);
 
+    if (detail.theme === 'singlepage')
+        template = 'theme/singlepage';
+
+    console.log(detail);
     return res.render(template, {detail});
 };
 
