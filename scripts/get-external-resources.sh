@@ -14,7 +14,7 @@ if [[ "$choice" != "y" ]]; then
     exit
 fi
 
-C="curl -o"
+C="curl -L -o"
 
 $C bolt.min.css https://unpkg.com/boltcss/bolt.min.css
 $C modern-normalize.css https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.css
