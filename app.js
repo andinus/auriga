@@ -8,7 +8,7 @@ app.set('strict routing', true);
 app.set('trust proxy', 1); // trust first proxy
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Some logging to STDOUT.
 app.use(morgan(':remote-addr [:date[clf]] :method :url :status :response-time ms :res[content-length]'));
