@@ -1,0 +1,10 @@
+# Caches
+.log
+.precomp
+.precomp/
+node_modules/
+
+# Backup files
+*~
+
+resources/external/
