@@ -175,6 +175,37 @@
                             </div>
                         </div>
                     </div>
+<br>
+<br>
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        Donate
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="text-align: left !important">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Donate for a cause</h1>
+                                </div>
+                                <div class="modal-body" style="text-align: center">
+                                  <!-- (A) LOAD QRCODEJS LIBRARY -->
+                                  <!-- https://cdnjs.com/libraries/qrcodejs -->
+                                  <!-- https://github.com/davidshimjs/qrcodejs -->
+                                  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+                                  <!-- (B) GENERATE QR CODE HERE -->
+                                  <div style="margin: auto" id="qrcode"></div>
+
+                                  <!-- (C) CREATE QR CODE ON PAGE LOAD -->
+                                  <script>
+                                    window.addEventListener("load", () => {
+                                        var qrc = new QRCode(document.getElementById("qrcode"), "upi://pay?pa=<%= detail.upi %> ");
+                                    });
+                                  </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>

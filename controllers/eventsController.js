@@ -31,3 +31,12 @@ export const eventCreate = (req, res, next) => {
 
     res.redirect('/events?created')
 };
+
+export const eventDelete = (req, res, next) => {
+    const stmt = conn.prepare(
+        'DELETE FROM ngo_event WHERE name = ?;'
+    );
+    stmt.run(req.params.name);
+
+    res.redirect('/events')
+};

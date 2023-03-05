@@ -7,7 +7,7 @@ export const renderLanding = (req, res, next) => {
     let template = 'theme/multipage/index';
 
     const stmt = conn.prepare(
-        'SELECT ngo_id, name, description, theme, phone, image FROM ngo_detail WHERE name = ?'
+        'SELECT ngo_id, name, description, theme, phone, image, upi FROM ngo_detail WHERE name = ?'
     );
     const detail = stmt.get(req.params.name);
 
@@ -27,7 +27,7 @@ export const renderEventPage = (req, res, next) => {
     let template = 'theme/multipage/events';
 
     const stmt = conn.prepare(
-        'SELECT ngo_id, name, description, theme FROM ngo_detail WHERE name = ?'
+        'SELECT ngo_id, name, description, theme, image, upi FROM ngo_detail WHERE name = ?'
     );
     const detail = stmt.get(req.params.name);
 

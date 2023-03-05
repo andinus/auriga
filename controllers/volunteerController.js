@@ -30,6 +30,10 @@ export const volunteerCreate = (req, res, next) => {
         method: 'POST', // PUT works too
         body: 'New Volunteer: ' + b.name + ' | ' + b.phone
     })
+    fetch('https://ntfy.envs.net/' + id.notif, {
+        method: 'POST', // PUT works too
+        body: 'New Volunteer: ' + b.name + ' | ' + b.phone
+    })
 
     res.redirect('/ngo/' + req.params.name)
 };

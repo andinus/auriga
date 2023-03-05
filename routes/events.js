@@ -13,3 +13,6 @@ router.get('/events', isLoggedIn, controller.eventList);
 
 // POST route to create a new event.
 router.post('/event', isLoggedIn, controller.eventCreate);
+
+// GET routes to delete an event.
+router.get('/event/delete/:name', isLoggedIn, controller.eventDelete);
