@@ -135,8 +135,61 @@
           <h1><%= detail.name %></h1>
           <p class="lead"><%= detail.description %></p>
           <p class="lead">
-            <a class="btn btn-lg btn-light fw-bold border-white bg-white"
-               href="/ngo/<%= detail.name %>/volunteer">Volunteer!</a>
+            
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Volunteer
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content" style="text-align: left !important">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Volunteer for us!</h1>
+                      </div>
+                      <div class="modal-body">
+                          <form action="/ngo/<%= detail.name %>/volunteer" method="post">
+                              <div class="mb-3">
+                                  <label for="name" class="form-label">Name</label>
+                                  <input type="text" class="form-control" id="name" name="name">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="phone" pattern="[6-9]{1}[0-9]{9}" class="form-label">Phone</label>
+                                  <input type="tel" class="form-control" id="phone" name="phone" minlength="10" required>
+                                  <small>Format: 10 digit phone number</small>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="email" class="form-label">Email</label>
+                                  <input type="email" class="form-control" id="email" name="email" placeholder="email@address.com" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="introduction" class="form-label">Introduction</label>
+                                  <textarea type="email" class="form-control" id="introduction" name="introduction" rows="3" placeholder="Your motivation.." required></textarea>
+                              </div>
+                              <br>
+                              <button class="w-100 btn btn-dark" type="submit">Submit!</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Donate
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="text-align: left !important">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Donate for a cause</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>hi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
           </p>
         </main>
 

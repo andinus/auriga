@@ -67,6 +67,7 @@
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                                 </div>
+                                  
                                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
                             </form>
                         </div>
@@ -81,6 +82,7 @@
                         <th scope="col">Starts</th>
                         <th scope="col">Ends</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,8 +96,12 @@
                         <td><%= events[i].starts %></td>
                         <td><%= events[i].ends %></td>
                         <td><%= events[i].description %></td>
+                        <td>
+                            <a href="#" class="btn btn-outline-danger"  role="button" >Delete</a>
+                        </td>
                     </tr>
                     <% } %>
+                    
                 </tbody>
             </table>
             
