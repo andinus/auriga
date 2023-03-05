@@ -1,5 +1,7 @@
 import db from '../utils/db.js';
 
+import crypto from 'crypto';
+
 import bcrypt from 'bcrypt';
 const saltRounds = 10; // Goes through 2^rounds of processing.
 
@@ -9,9 +11,9 @@ const conn = db();
 export const updateDetail = (req, res, next) => {
     const b = req.body;
     const detail = conn.prepare(
-        'UPDATE ngo_detail SET name = ?, description = ?, theme = ?, publish = ?, phone = ?, image = ? WHERE ngo_id = ?;'
+        'UPDATE ngo_detail SET name = ?, description = ?, theme = ?, publish = ?, phone = ?, image = ?, upi = ? WHERE ngo_id = ?;'
     );
-    detail.run(b.ngoName, b.description, b.theme, b.publish === 'on' ? 1 : 0 , b.phone, b.image, req.session.user);
+    detail.run(b.ngoName, b.description, b.theme, b.publish === 'on' ? 1 : 0 , b.phone, b.image, b.upi, req.session.user);
     res.redirect('/dashboard?updated');
 };
 
@@ -59,9 +61,9 @@ export const userRegister = (req, res, next) => {
             const accountInfo = account.run(b.email, hashedPassword);
 
             const detail = conn.prepare(
-                'INSERT INTO ngo_detail (ngo_id, name) VALUES (?, ?);'
+                'INSERT INTO ngo_detail (ngo_id, name, notif) VALUES (?, ?, ?);'
             );
-            detail.run(accountInfo.lastInsertRowid, b.ngoName);
+            detail.run(accountInfo.lastInsertRowid, b.ngoName, 'auriga-' + crypto.randomBytes(8).toString('hex'));
 
             res.redirect('/login?registerSuccess');
         }

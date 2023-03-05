@@ -1,5 +1,4 @@
 import db from '../utils/db.js';
-
 const conn = db();
 
 // Renders the events page.
@@ -27,5 +26,8 @@ export const eventCreate = (req, res, next) => {
         'INSERT INTO ngo_event (ngo_id, name, description, starts, ends) VALUES (?, ?, ?, ?, ?);'
     );
     stmt.run(req.session.user, b.name, b.description, b.starts, b.ends);
+
+
+
     res.redirect('/events?created')
 };

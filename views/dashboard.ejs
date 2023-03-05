@@ -18,6 +18,11 @@
                         You can publish your page once you've filled
                         all the details.
                     </p>
+                    <p>
+                      Your notification secret is given below, an
+                      admin will guide you through the setup.
+                    </p>
+                    <input class="form-control" type="text" value="<%= acct.notif %>" aria-label="readonly input example" readonly>
                     <% if (alert) { %>
                         <div class="alert <%= alert.classes %>" role="alert">
                             <%= alert.message %>
@@ -43,6 +48,10 @@
                           <label for="phone" pattern="[6-9]{1}[0-9]{9}" class="form-label">Phone</label>
                           <input type="tel" class="form-control" id="phone" name="phone" minlength="10" value="<%= acct.phone %>" required>
                           <small>Format: 10 digit phone number</small>
+                        </div>
+                        <div class="mb-3">
+                          <label for="upi" class="form-label">UPI ID</label>
+                          <input type="text" class="form-control" name="upi" id="upi" value="<%= acct.upi %>" required>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
