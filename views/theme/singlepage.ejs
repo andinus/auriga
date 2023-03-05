@@ -133,36 +133,68 @@
                 <div class="col-md-5 mx-auto my-5">
                     <h1 class="display-4 fw-normal"><%= detail.name %></h1>
                     <p class="lead fw-normal"><%= detail.description %></p>
-                    <a class="btn btn-outline-secondary" href="#volunteer">Volunteer</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Volunteer
+                      </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Volunteer Registration</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name:</label>
+                                        <input type="text" class="form-control" id="name" name="name">           
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone number:</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" maxlength="10"  required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="email@address.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="introduction" class="form-label">Introduction:</label>
+                                        <textarea type="email" class="form-control" id="introduction" name="introduction" rows="5   " placeholder="Give a small introduction about yourself" required></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">                              
+                              <button class="w-100 btn btn-dark" type="submit">Register</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+
                 </div>
                 <!-- <div class="product-device shadow-sm d-none d-md-block"></div>
                      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div> -->
             </div>
 
             <h2 style="text-align: center; padding: 2em;">Our Events</h2>
-
             <div style="display: flex; margin-left: 1em; margin-right: 1em; gap: 1em; flex-wrap: wrap; justify-content: center;">
+
+                <% for (let i =0; i < events.length;  i++ ) { %>
                 <div style="flex-basis: 45vw;"
-                     class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div class="my-3 py-3">
-                        <h2 class="display-5">Another headline</h2>
-                        <p class="lead">And an even wittier subheading.</p>
+                     class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded-5">
+                    <div class="my-3 py-3" >
+                        <h2 class="display-5"><%=events[i].name%></h2>
+                        <p class="lead"><%=events[i].description%></p>  
+                        <i>        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        </svg> 
+                        Date: <%=events[i].starts%>|<%=events[i].ends%>
+                    </i>                 
                     </div>
                 </div>
-                <div style="flex-basis: 45vw;"
-                     class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div class="my-3 py-3">
-                        <h2 class="display-5">Another headline</h2>
-                        <p class="lead">And an even wittier subheading.</p>
-                    </div>
-                </div>
-                <div style="flex-basis: 45vw;"
-                     class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div class="my-3 py-3">
-                        <h2 class="display-5">Another headline</h2>
-                        <p class="lead">And an even wittier subheading.</p>
-                    </div>
-                </div>
+                <% } %>
             </div>
         </main>
     </body>

@@ -7,15 +7,22 @@ export const renderLanding = (req, res, next) => {
     let template = 'theme/multipage/index';
 
     const stmt = conn.prepare(
-        'SELECT name, description, theme FROM ngo_detail WHERE name = ?'
+        'SELECT ngo_id,name, description, theme FROM ngo_detail WHERE name = ?'
     );
     const detail = stmt.get(req.params.name);
 
-    if (detail.theme === 'singlepage')
-        template = 'theme/singlepage';
+    if (detail.theme === 'singlepage'){
+        const stmtEvent = conn.prepare(
+            'SELECT name, description, starts, ends FROM ngo_event WHERE ngo_id = ?'
+        );
+        const events = stmtEvent.all(detail.ngo_id);
+        return res.render('theme/singlepage', {detail,events});
+    }else{
+        return res.render('theme/multipage/index', {detail});
+    }
 
     console.log(detail);
-    return res.render(template, {detail});
+    
 };
 
 // Renders NGO's event page.
