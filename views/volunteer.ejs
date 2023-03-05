@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head', {title: 'Events'}); %>
+        <style>
+         main {
+             padding: 0.4em 2em;
+         }
+        </style>
+    </head>
+    <body>
+        <%- include('./partials/navigation', {volunteers: true}); %>
+        <main>
+            <h3>Volunteers</h3>
+
+            <table class="table table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Introduction</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                  <!-- add a for loop here to loop over events -->
+                  <% for (let i =0; i < volunteers.length;  i++ ) { %>
+
+
+                    <tr>
+                        <th scope="row"><%= volunteers[i].name %></th>
+                        <td><%= volunteers[i].phone %></td>
+                        <td><%= volunteers[i].email %></td>
+                        <td><%= volunteers[i].introduction %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+        </main>
+    </body>
+</html>

@@ -9,9 +9,9 @@ const conn = db();
 export const updateDetail = (req, res, next) => {
     const b = req.body;
     const detail = conn.prepare(
-        'UPDATE ngo_detail SET name = ?, description = ?, theme = ?, publish = ? WHERE ngo_id = ?;'
+        'UPDATE ngo_detail SET name = ?, description = ?, theme = ?, publish = ?, phone = ?, image = ? WHERE ngo_id = ?;'
     );
-    detail.run(b.ngoName, b.description, b.theme, b.publish === 'on' ? 1 : 0 , req.session.user);
+    detail.run(b.ngoName, b.description, b.theme, b.publish === 'on' ? 1 : 0 , b.phone, b.image, req.session.user);
     res.redirect('/dashboard?updated');
 };
 

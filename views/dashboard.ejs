@@ -40,6 +40,16 @@
                             <textarea class="form-control" name="description" id="description" placeholder="Description..." rows="3" required><%= acct.description %></textarea>
                         </div>
                         <div class="mb-3">
+                          <label for="phone" pattern="[6-9]{1}[0-9]{9}" class="form-label">Phone</label>
+                          <input type="tel" class="form-control" id="phone" name="phone" minlength="10" value="<%= acct.phone %>" required>
+                          <small>Format: 10 digit phone number</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="text" class="form-control" name="image" id="image" value="<%= acct.image %>" required>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Theme</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="theme" id="singlepage" value="singlepage" <%= acct.theme === 'singlepage' ? 'checked' : '' %>>

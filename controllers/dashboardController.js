@@ -5,7 +5,7 @@ const conn = db();
 // Renders the user dashboard.
 export const userDashboard = (req, res, next) => {
     const stmt = conn.prepare(
-        'SELECT name, description, theme, publish FROM ngo_detail WHERE ngo_id = ?'
+        'SELECT name, image, description, theme, publish, phone FROM ngo_detail WHERE ngo_id = ?'
     );
     const acct = stmt.get(req.session.user);
 
